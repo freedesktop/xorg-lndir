@@ -194,7 +194,7 @@ dodir (char *fn,		/* name of "from" directory, either absolute or
 	strcpy (p, dp->d_name);
 
 	if (n_dirs > 0) {
-	    if (stat (buf, &sb) < 0) {
+	    if (lstat (buf, &sb) < 0) {
 		mperror (buf);
 		continue;
 	    }
