@@ -222,6 +222,8 @@ dodir (char *fn,		/* name of "from" directory, either absolute or
 			continue;
 		    if (!strcmp (dp->d_name, "CVS.adm"))
 			continue;
+		    if (!strcmp (dp->d_name, ".svn"))
+			continue;
 		}
 		ocurdir = rcurdir;
 		rcurdir = buf;
