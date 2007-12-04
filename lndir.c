@@ -185,7 +185,7 @@ dodir (char *fn,		/* name of "from" directory, either absolute or
     while ((dp = readdir (df))) {
 	if (dp->d_name[strlen(dp->d_name) - 1] == '~')
 	    continue;
-#ifdef __DARWIN__
+#ifdef __APPLE__
 	/* Ignore these Mac OS X Finder data files */
 	if (!strcmp(dp->d_name, ".DS_Store") || 
 	    !strcmp(dp->d_name, "._.DS_Store")) 
