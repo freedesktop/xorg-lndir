@@ -48,6 +48,7 @@ in this Software without prior written authorization from The Open Group.
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <limits.h>
 #if !defined(MINIX) && !defined(Lynx)
 #include <sys/param.h>
 #endif
