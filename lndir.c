@@ -182,6 +182,8 @@ dodir (char *fn,		/* name of "from" directory, either absolute or
     if (*(p - 1) != '/')
 	*p++ = '/';
     n_dirs = fs->st_nlink;
+    if (n_dirs == 1)
+	n_dirs = INT_MAX;
     while ((dp = readdir (df))) {
 	if (dp->d_name[strlen(dp->d_name) - 1] == '~')
 	    continue;
