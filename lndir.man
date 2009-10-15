@@ -76,8 +76,8 @@ argument may be relative (e.g., ../src) and is relative to
 (not the current directory).
 .PP 
 .\" CVS.adm is used by the Concurrent Versions System.
-Note that BitKeeper, RCS, SCCS, .svn, CVS and CVS.adm directories are
-shadowed only if the \fB\-withrevinfo\fP flag is specified.
+Note that BitKeeper, CVS, CVS.adm, .git, .hg, RCS, SCCS, and .svn directories
+are shadowed only if the \fB\-withrevinfo\fP flag is specified.
 .PP
 If you add files, simply run
 .I lndir
