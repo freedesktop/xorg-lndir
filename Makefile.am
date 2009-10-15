@@ -20,7 +20,7 @@
 #  PERFORMANCE OF THIS SOFTWARE.
 
 bin_PROGRAMS = lndir
-lndir_CFLAGS = $(XPROTO_CFLAGS)
+AM_CFLAGS = $(CWARNFLAGS) $(XPROTO_CFLAGS)
 lndir_SOURCES = lndir.c
 
 # Man page
@@ -36,13 +36,15 @@ CLEANFILES = $(appman_DATA)
 XORGRELSTRING = @PACKAGE_STRING@
   XORGMANNAME = X Version 11
 
+SED = sed
+
 MAN_SUBSTS = \
 	-e 's|__xorgversion__|"$(XORGRELSTRING)" "$(XORGMANNAME)"|'
 
 SUFFIXES = .$(APP_MAN_SUFFIX) .man
 
 .man.$(APP_MAN_SUFFIX):
-	sed $(MAN_SUBSTS) < $< > $@
+	$(AM_V_GEN)$(SED) $(MAN_SUBSTS) < $< > $@
 
 EXTRA_DIST = $(appman_PRE)
 

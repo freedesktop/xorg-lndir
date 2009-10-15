@@ -31,11 +31,14 @@ AM_CONFIG_HEADER(config.h)
 AC_PROG_INSTALL
 AC_PROG_CC
 
+# Require xorg-macros 1.3 or later: XORG_DEFAULT_OPTIONS
+m4_ifndef([XORG_MACROS_VERSION],
+	  [m4_fatal([must install xorg-macros 1.3 or later before running autoconf/autogen])])
+XORG_MACROS_VERSION(1.3)
+XORG_DEFAULT_OPTIONS
+
 # Checks for pkg-config packages
 PKG_CHECK_MODULES(XPROTO, xproto)
 AC_SUBST(XPROTO_CFLAGS)
-
-XORG_MANPAGE_SECTIONS
-XORG_RELEASE_VERSION
 
 AC_OUTPUT([Makefile])
