@@ -78,6 +78,7 @@ argument may be relative (e.g., ../src) and is relative to
 .\" CVS.adm is used by the Concurrent Versions System.
 Note that BitKeeper, CVS, CVS.adm, .git, .hg, RCS, SCCS, and .svn directories
 are shadowed only if the \fB\-withrevinfo\fP flag is specified.
+Files with names ending in \fI~\fP are never shadowed.
 .PP
 If you add files, simply run
 .I lndir
@@ -105,8 +106,9 @@ If the link is to a directory, this is almost certainly the wrong thing.
 This option exists mostly to emulate the behavior the C version of
 \fIlndir\fP had in X11R6.  Its use is not recommended.
 .IP \-withrevinfo
-Causes any BitKeeper, RCS, SCCS, .svn, CVS and CVS.adm subdirectories to be
-treated as any other directory, rather than ignored.
+Causes any source control manager subdirectories
+(those named BitKeeper, CVS, CVS.adm, .git, .hg, RCS, SCCS, or .svn)
+to be treated as any other directory, rather than ignored.
 .SH DIAGNOSTICS
 The program displays the name of each subdirectory it enters, followed
 by a colon.  The \fB\-silent\fP option suppresses these messages.
@@ -117,3 +119,5 @@ exists.
 .PP
 If the link already exists but doesn't point to the correct file, the
 program prints the link name and the location where it does point.
+.SH SEE ALSO
+.BR ln (1).
