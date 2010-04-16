@@ -51,27 +51,10 @@ in this Software without prior written authorization from The Open Group.
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <limits.h>
-#if !defined(MINIX) && !defined(Lynx)
 #include <sys/param.h>
-#endif
 #include <errno.h>
+#include <dirent.h>
 
-#ifndef X_NOT_POSIX
-#include <dirent.h>
-#else
-#ifdef SYSV
-#include <dirent.h>
-#else
-#ifdef USG
-#include <dirent.h>
-#else
-#include <sys/dir.h>
-#ifndef dirent
-#define dirent direct
-#endif
-#endif
-#endif
-#endif
 #ifndef MAXPATHLEN
 #define MAXPATHLEN 2048
 #endif
@@ -204,11 +187,7 @@ dodir (char *fn,		/* name of "from" directory, either absolute or
 		continue;
 	    }
 
-#ifdef S_ISDIR
-	    if(S_ISDIR(sb.st_mode))
-#else
-	    if ((sb.st_mode & S_IFMT) == S_IFDIR)
-#endif
+	    if (S_ISDIR(sb.st_mode))
 	    {
 		/* directory */
 		n_dirs--;
@@ -377,11 +356,7 @@ main (int ac, char *av[])
     /* to directory */
     if (stat (tn, &ts) < 0)
 	quiterr (1, tn);
-#ifdef S_ISDIR
     if (!(S_ISDIR(ts.st_mode)))
-#else
-    if (!(ts.st_mode & S_IFMT) == S_IFDIR)
-#endif
 	quit (2, "%s: Not a directory", tn);
     if (chdir (tn) < 0)
 	quiterr (1, tn);
@@ -389,11 +364,7 @@ main (int ac, char *av[])
     /* from directory */
     if (stat (fn, &fs) < 0)
 	quiterr (1, fn);
-#ifdef S_ISDIR
     if (!(S_ISDIR(fs.st_mode)))
-#else
-    if (!(fs.st_mode & S_IFMT) == S_IFDIR)
-#endif
 	quit (2, "%s: Not a directory", fn);
 
     exit (dodir (fn, &fs, &ts, 0));
