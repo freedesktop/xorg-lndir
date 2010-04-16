@@ -21,10 +21,11 @@ dnl  PERFORMANCE OF THIS SOFTWARE.
 dnl
 dnl Process this file with autoconf to create configure.
 
-AC_PREREQ([2.57])
+AC_PREREQ([2.60])
 AC_INIT(lndir, [1.0.1], [https://bugs.freedesktop.org/enter_bug.cgi?product=xorg])
 AM_INIT_AUTOMAKE([foreign dist-bzip2])
 AM_MAINTAINER_MODE
+AC_USE_SYSTEM_EXTENSIONS
 
 # Require xorg-macros 1.4 or later: XORG_DEFAULT_OPTIONS, INSTALL_CMD
 m4_ifndef([XORG_MACROS_VERSION],
@@ -36,6 +37,9 @@ AM_CONFIG_HEADER(config.h)
 
 AC_PROG_INSTALL
 AC_PROG_CC
+
+# Avoid stat() failures if a file has a size that doesn't fit in 32-bits
+AC_SYS_LARGEFILE
 
 # Checks for pkg-config packages
 PKG_CHECK_MODULES(XPROTO, xproto)

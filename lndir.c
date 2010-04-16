@@ -45,6 +45,10 @@ in this Software without prior written authorization from The Open Group.
    	%  lndir ../X
 */
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include <X11/Xos.h>
 #include <X11/Xfuncproto.h>
 #include <stdio.h>
