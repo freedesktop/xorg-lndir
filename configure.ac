@@ -35,9 +35,6 @@ XORG_DEFAULT_OPTIONS
 
 AM_CONFIG_HEADER(config.h)
 
-AC_PROG_INSTALL
-AC_PROG_CC
-
 # Avoid stat() failures if a file has a size that doesn't fit in 32-bits
 AC_SYS_LARGEFILE
 
