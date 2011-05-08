@@ -44,6 +44,5 @@ AC_SYS_LARGEFILE
 
 # Checks for pkg-config packages
 PKG_CHECK_MODULES(XPROTO, xproto)
-AC_SUBST(XPROTO_CFLAGS)
 
 AC_OUTPUT([Makefile])
