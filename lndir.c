@@ -326,35 +326,35 @@ dodir (char *fn,		/* name of "from" directory, either absolute or
 }
 
 int
-main (int ac, char *av[])
+main (int argc, char *argv[])
 {
-    char *prog_name = av[0];
+    char *prog_name = argv[0];
     char *fn, *tn;
     struct stat fs, ts;
 
-    while (++av, --ac) {
-	if (strcmp(*av, "-silent") == 0)
+    while (++argv, --argc) {
+	if (strcmp(*argv, "-silent") == 0)
 	    silent = 1;
-	else if (strcmp(*av, "-ignorelinks") == 0)
+	else if (strcmp(*argv, "-ignorelinks") == 0)
 	    ignore_links = 1;
-	else if (strcmp(*av, "-withrevinfo") == 0)
+	else if (strcmp(*argv, "-withrevinfo") == 0)
 	    with_revinfo = 1;
-	else if (strcmp(*av, "--") == 0) {
-	    ++av, --ac;
+	else if (strcmp(*argv, "--") == 0) {
+	    ++argv, --argc;
 	    break;
 	}
 	else
 	    break;
     }
 
-    if (ac < 1 || ac > 2)
+    if (argc < 1 || argc > 2)
 	quit (1,
 	      "usage: %s [-silent] [-ignorelinks] [-withrevinfo] fromdir [todir]",
 	      prog_name);
 
-    fn = av[0];
-    if (ac == 2)
-	tn = av[1];
+    fn = argv[0];
+    if (argc == 2)
+	tn = argv[1];
     else
 	tn = ".";
 
