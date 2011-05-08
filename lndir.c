@@ -348,7 +348,8 @@ main (int ac, char *av[])
     }
 
     if (ac < 1 || ac > 2)
-	quit (1, "usage: %s [-silent] [-ignorelinks] fromdir [todir]",
+	quit (1,
+	      "usage: %s [-silent] [-ignorelinks] [-withrevinfo] fromdir [todir]",
 	      prog_name);
 
     fn = av[0];
