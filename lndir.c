@@ -72,7 +72,7 @@ int with_revinfo = 0;		/* -withrevinfo */
 char *rcurdir;
 char *curdir;
 
-static void
+static void _X_ATTRIBUTE_PRINTF(2,3) _X_NORETURN
 quit (int code, const char * fmt, ...)
 {
     va_list args;
@@ -83,14 +83,14 @@ quit (int code, const char * fmt, ...)
     exit (code);
 }
 
-static void
+static void _X_NORETURN
 quiterr (int code, const char *s)
 {
     perror (s);
     exit (code);
 }
 
-static void
+static void _X_ATTRIBUTE_PRINTF(1,2)
 msg (const char * fmt, ...)
 {
     va_list args;

@@ -43,6 +43,6 @@ XORG_DEFAULT_OPTIONS
 AC_SYS_LARGEFILE
 
 # Checks for pkg-config packages
-PKG_CHECK_MODULES(XPROTO, xproto)
+PKG_CHECK_MODULES(XPROTO, xproto >= 7.0.17)
 
 AC_OUTPUT([Makefile])
