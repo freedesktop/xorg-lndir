@@ -73,7 +73,7 @@ char *rcurdir;
 char *curdir;
 
 static void
-quit (int code, char * fmt, ...)
+quit (int code, const char * fmt, ...)
 {
     va_list args;
     va_start(args, fmt);
@@ -84,14 +84,14 @@ quit (int code, char * fmt, ...)
 }
 
 static void
-quiterr (int code, char *s)
+quiterr (int code, const char *s)
 {
     perror (s);
     exit (code);
 }
 
 static void
-msg (char * fmt, ...)
+msg (const char * fmt, ...)
 {
     va_list args;
     if (curdir) {
@@ -135,7 +135,7 @@ equivalent(char *lname, char *rname, char **p)
 /* Recursively create symbolic links from the current directory to the "from"
    directory.  Assumes that files described by fs and ts are directories. */
 static int
-dodir (char *fn,		/* name of "from" directory, either absolute or
+dodir (const char *fn,		/* name of "from" directory, either absolute or
 				   relative to cwd */
        struct stat *fs, 
        struct stat *ts,		/* stats for the "from" directory and cwd */
@@ -329,7 +329,7 @@ int
 main (int argc, char *argv[])
 {
     char *prog_name = argv[0];
-    char *fn, *tn;
+    const char *fn, *tn;
     struct stat fs, ts;
 
     while (++argv, --argc) {
